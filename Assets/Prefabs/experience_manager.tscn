@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ne5y60hke8oj"]
+
+[ext_resource type="Script" path="res://Assets/Prefabs/experience_manager.gd" id="1_f5rp3"]
+
+[node name="ExperienceManager" type="Node"]
+script = ExtResource("1_f5rp3")

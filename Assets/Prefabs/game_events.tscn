@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csfc4teetyylq"]
+
+[ext_resource type="Script" path="res://Assets/Prefabs/game_events.gd" id="1_uiusr"]
+
+[node name="GameEvents" type="Node"]
+script = ExtResource("1_uiusr")
