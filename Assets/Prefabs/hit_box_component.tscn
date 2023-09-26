@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgrtua2p5huhj"]
+
+[ext_resource type="Script" path="res://Assets/Prefabs/hit_box_component.gd" id="1_5bqg0"]
+
+[node name="HitBoxComponent" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_5bqg0")
