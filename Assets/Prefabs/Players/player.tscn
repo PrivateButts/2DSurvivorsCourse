@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://1jw6ddu0csbb"]
+[gd_scene load_steps=8 format=3 uid="uid://1jw6ddu0csbb"]
 
 [ext_resource type="Script" path="res://Assets/Prefabs/Players/player.gd" id="1_mpiru"]
 [ext_resource type="Texture2D" uid="uid://kg6ldhk5ua53" path="res://Assets/Prefabs/Players/GreenDude.png" id="2_5ddy3"]
 [ext_resource type="PackedScene" uid="uid://cdtq41efjrtxg" path="res://Assets/Prefabs/Abilities/sword/sword_ability_controller.tscn" id="2_flqos"]
+[ext_resource type="PackedScene" uid="uid://c7475rkpmnw2j" path="res://Assets/Prefabs/health_component.tscn" id="2_pjdab"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2sepf"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udpdn"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxv0b"]
 radius = 5.0
@@ -15,17 +19,31 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_mpiru")
 
+[node name="HealthComponent" parent="." instance=ExtResource("2_pjdab")]
+
 [node name="AbilityManager" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_flqos")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PickupArea2D" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_2sepf")
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_udpdn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_5ddy3")
